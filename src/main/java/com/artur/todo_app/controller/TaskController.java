@@ -1,7 +1,9 @@
 package com.artur.todo_app.controller;
 
+import com.artur.todo_app.dto.TaskRequestDto;
 import com.artur.todo_app.model.Task;
 import com.artur.todo_app.service.TaskService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,7 +29,7 @@ public class TaskController {
     }
 
     @PostMapping("/postTask")
-    public Task postTask(@RequestBody Task task) {
+    public Task postTask(@Valid @RequestBody TaskRequestDto task) {
         return taskService.saveTask(task);
     }
 
